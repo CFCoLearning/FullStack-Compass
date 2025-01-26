@@ -18,11 +18,11 @@
   * 掌握 TypeScript、React、Next.js 等现代前端框架，构建高效、可维护的 Web 应用。
   * 利用 Tailwind CSS 进行快速样式开发，提升 UI 设计效率和一致性。
   * 使用 MDX 实现文档驱动的内容管理，提高可维护性和可读性。
-1. SaaS 架构
+2. SaaS 架构
   * 深入理解 SaaS 业务模型，学习如何利用 Next.js 进行全栈开发（Server-side Rendering、API Routes）。
   * 结合 Shiki 进行代码高亮与文档生成，打造开发者友好的平台。
   * 了解 SaaS 应用的部署、性能优化及可扩展架构设计。
-2. 产品设计
+3. 产品设计
   * 通过 React Spring 和 Framer Motion 创建流畅的动画交互效果，提升用户体验。
   * 学习 Linaria 进行零运行时的 CSS-in-JS 方案，实现高效的样式管理。
   * 结合设计思维，打造美观、易用、响应式的 Web 应用界面。
