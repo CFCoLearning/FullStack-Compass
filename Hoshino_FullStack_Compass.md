@@ -2,7 +2,7 @@
 ---
 # Hoshino
 
-> I'm joker king.
+> I'm joker king. 
 
 ## 笔记证明
 
