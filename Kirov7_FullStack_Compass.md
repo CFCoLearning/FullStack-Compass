@@ -1,11 +1,9 @@
 # CFC Studio 共学 FullStack Compass 指引
 ---
-# [your name]
+# Kirov7
 
 ## 笔记证明
-
-<!-- Content_START -->
+<!-- Content_START --> 
 
 ### 02.03
-
 <!-- Content_END -->
