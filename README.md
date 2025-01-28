@@ -69,7 +69,7 @@ SaaS、Typescript、React、Nextjs、Taildwindcss、MDX、Linaria、Shiki、Reac
 
 正式打卡开始后，你需要将每天「学习笔记证明」按正确的编写要求更新到你的 [YourName]_FullStack_Compass.md 文档中证明你今天学习了，提交成功后仓库会更新你的打卡状态，请注意核实。每周有五次请假的机会，超过后状态变为 ❌，视为本次共学失败。
 
-详细步骤可以参考：https://learning.bibibai.top/docs/tutorial
+详细步骤可以参考：https://learning.bibibai.top/docs/introduction/tutorial
 ## 打卡记录表
 
 ✅ = Done ⭕️ = Missed ❌ = Failed
