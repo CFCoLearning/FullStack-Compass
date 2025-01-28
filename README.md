@@ -74,6 +74,7 @@ SaaS、Typescript、React、Nextjs、Taildwindcss、MDX、Linaria、Shiki、Reac
 
 **设计参考**
 * [mobbin](https://mobbin.com/explore/web): 汇总优质设计案例，适合灵感来源和设计借鉴。
+* [2025 年 web 设计趋势](https://www.youtube.com/watch?v=gR-yNIGICzM)
 
 **设计工具**
 * [figma](https://www.figma.com/): 流行的协作式界面设计工具。
