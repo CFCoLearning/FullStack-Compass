@@ -136,7 +136,7 @@ SaaS、Typescript、React、Nextjs、Taildwindcss、MDX、Linaria、Shiki、Reac
 | YamKH514 | ✅ | ✅ | | | | | | | | | | | | | | | | | | | |
 | DriveFLY | ✅ | ✅ | | | | | | | | | | | | | | | | | | | |
 | Makise | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | |
-| DemoJustLuGuo | ✅ |   | | | | | | | | | | | | | | | | | | | |
+| DemoJustLuGuo | ✅ | ✅ | | | | | | | | | | | | | | | | | | | |
 | AmberHeart | ✅ |   | | | | | | | | | | | | | | | | | | | |
 <!-- END_COMMIT_TABLE -->
 
