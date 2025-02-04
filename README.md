@@ -132,7 +132,7 @@ SaaS、Typescript、React、Nextjs、Taildwindcss、MDX、Linaria、Shiki、Reac
 | echozyr2001 | ✅ | ✅ | | | | | | | | | | | | | | | | | | | |
 | Kirov7 | ⭕️ |   | | | | | | | | | | | | | | | | | | | |
 | Hoshino | ⭕️ |   | | | | | | | | | | | | | | | | | | | |
-| RisingGalaxy | ⭕️ |   | | | | | | | | | | | | | | | | | | | |
+| RisingGalaxy | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | |
 | YamKH514 | ✅ | ✅ | | | | | | | | | | | | | | | | | | | |
 | DriveFLY | ✅ | ✅ | | | | | | | | | | | | | | | | | | | |
 | Makise | ⭕️ | ✅ | | | | | | | | | | | | | | | | | | | |
