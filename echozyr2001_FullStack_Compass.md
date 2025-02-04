@@ -34,4 +34,22 @@
 
 ![home](./images/echozyr2001/home.png)
 
+### 02.04
+
+> 学习时间：60(10) min
+
+调整组件 `position` 属性为 `fixed`，可以避免对 `layout` 内 `stack` 的影响。
+
+添加 `frmaer` 并设置 `width` 属性为 `fill`，可以实现 `spacer` 的效果。
+
+![spacer](./images/echozyr2001/spacer.png)
+
+淡入动画需要设置 `Effects` 的 `Appear` 效果。
+
+动画在过程中被截断了，需要将 `Text` 部分的 `Overflow` 设置为 `Visible`。
+
+注意修改之后 `publish` 需要点击 `Update` 才会生效。
+
+最后，成品如下：https://global-lot-758021.framer.app/
+
 <!-- Content_END -->
