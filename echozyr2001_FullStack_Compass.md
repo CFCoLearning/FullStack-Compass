@@ -52,4 +52,30 @@
 
 最后，成品如下：https://global-lot-758021.framer.app/
 
+### 02.05
+
+> 学习时间：20 min
+
+今天有点忙，只花了一点时间将新手教程浏览完了。
+
+一个好用的插件：`Phosphor` 可以用来查询好看的 `icon`。
+
+一个 `Portfolio` 模版：https://www.framer.com/marketplace/templates/cohesion/
+
+通过 `Chrome` 插件，可以将一个网页直接复制成 `Framer` 项目，cv 工程师狂喜：https://www.framer.com/academy/lessons/html-to-framer 计划明天尝试用来玩玩。
+
+### 02.07
+
+> 学习时间：20 min
+
+尝试之前提到的页面提取插件。
+
+安装插件 `HTML to Framer`，同时注意修改其设置，将“允许访问文件网址”选项打卡才能正常使用。
+
+确实好用，一瞬间就将别人的页面 copy 过来了：https://traditional-surprise-092015.framer.app/
+
+![copy](./images/echozyr2001/copy.png)
+
+最近在忙工作上的事，今天抽空暂时就做到这。
+
 <!-- Content_END -->

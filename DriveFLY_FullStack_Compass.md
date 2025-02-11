@@ -26,7 +26,7 @@
 
   span、a
 
-- `inline-block`：
+- `inline-block/flex`：单独介绍
 
 - `none`用于显示或隐藏元素
 
@@ -141,5 +141,15 @@ vh 和 vw 分别相对于视口的高度和宽度。
 #### ToRead
 
 https://learn.shayhowe.com/html-css/
+
+### 02.09
+
+回来上班了。旅游之余还能调个小程序样式，也是没谁了。
+
+依旧是关于 Uniapp 的，Uniapp 的 ScrollX 要求`white-space`属性强制为`normal`以强制不换行。在调试因其它样式的原因导致高度不以实际为准。一顿操作猛如虎，打了一些补丁解决这个问题。
+
+事实就是，基础不牢，地动山摇。配合这段时间了解的 CSS 基础知识，在调试时越发得心应手。
+
+给我牛坏了。
 
 <!-- Content_END -->
