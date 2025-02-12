@@ -19,4 +19,12 @@
 ### 02.11
 今日学习时长：3h
 继续学习next框架，重点学习了next的路由部分，此外初次接触了tailwindcss，通过文档简单浏览了css原子化写法
+
+### 02.12
+今日学习时长:2h
+完成了next框架的基本学习，参考课程
+https://www.bilibili.com/video/BV157pRe8EyD/?share_source=copy_web&vd_source=68d80bbf2e445c07dab592a7cb4c813e
+next作为一个全栈框架无疑是很优秀的，结合lowdb或其他类似插件可以直接在next程序中方便快捷的实现数据操作
+但对于长线开发并不是很友好，当涉及到api管理的时候，next的目录架构也会显得杂乱，个人认为还是将api统一封装调用后端或直接使用ajax更为方便
+
 <!-- Content_END -->
