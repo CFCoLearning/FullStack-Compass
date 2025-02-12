@@ -64,5 +64,35 @@
 
 套盒子的平行排版还是不熟悉,等进一步学习<br><br>
 
+### 02.12
+#### 今日学习时长：20min
+
+大概是这个
+
+```bash
+        *{
+            line-height: 2px;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            font-style: inherit;
+            vertical-align: baseline;
+            text-align: inherit;
+            /* margin: 0; */
+            /* padding: 0; */
+            /* border: 0; */
+            /* outline: 0; */
+            background: transparent;
+        }
+```
+不过应该得改
+
+### 02.13
+#### 今日学习时长：50min
+
+老的太乱了,所以重新整理了一份新的<br><br>
+
+用调试工具去参考了下现成的已有网页,答案是太杂了不好看懂<br><br>
+
 
 <!-- Content_END -->
