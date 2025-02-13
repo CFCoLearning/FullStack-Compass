@@ -27,4 +27,10 @@ https://www.bilibili.com/video/BV157pRe8EyD/?share_source=copy_web&vd_source=68d
 next作为一个全栈框架无疑是很优秀的，结合lowdb或其他类似插件可以直接在next程序中方便快捷的实现数据操作
 但对于长线开发并不是很友好，当涉及到api管理的时候，next的目录架构也会显得杂乱，个人认为还是将api统一封装调用后端或直接使用ajax更为方便
 
+### 02.13
+今日学习时长:4h
+使用nextJS框架，搭配tailwindcss与framer motion进行一些简单的尝试，参考视频
+https://www.bilibili.com/video/BV1TTN9eiEom/?spm_id_from=333.337.search-card.all.click&vd_source=35e706041597c24e7956cc9a1ca4e48a
+我将学习成果上传到了github，下面是地址
+https://github.com/MakiseCrise/FullCompassLearning.git
 <!-- Content_END -->
