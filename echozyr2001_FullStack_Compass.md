@@ -78,4 +78,50 @@
 
 最近在忙工作上的事，今天抽空暂时就做到这。
 
+### 02.13
+
+> 学习时间：60 min
+
+使用里一段时间 `framer` 发现它确实有很多实用的特效和动画效果，但是和 `figma` 想比，它有一个很大的缺点：不能导出成代码。
+
+`framer` 只能通过 publish 的方式发布设计的页面，这很方便，但是依赖 `framer` 官方，且缺少可定制性。
+
+接下来还是回到 `figma` 的使用上吧。
+
+---
+
+字体最好设置在 `16px` 到 `18px` 之间
+
+选择一个 `layer` 使用快捷键 `Shift + a` 可以将 `layer` 转换为 `frame`
+
+将 `frame` 的布局设置为 `Hug` 可以自动适应页面布局
+
+快捷键 `opt + cmd + k` 可以将 `frame` 转换为一个组件
+
+---
+
+创建可交互式组件
+
+命名规则 `button/default/unsaved`
+
+> 为什么要使用斜线分隔的命名系统？
+>
+> 使用斜杠 ( / ) 构造组件名称可让您快速设置组件的属性值。第一个斜杠之前的任何文本都将成为组件名称，并且每个额外的斜杠级别都会创建一个新属性，该属性将应用于组件集中的所有变体。例如，我们的按钮名称为 button/default/unsaved。
+>
+> 添加一个变体后，组件集将看起来像：
+>
+> Component set name: button
+>
+> Property 1: default
+>
+> Property 2: unsaved
+>
+> 要完成配置，我们需要更新属性名称并为组件集中的每个变体添加属性值。
+
+![interactive](./images/echozyr2001/interactive.png)
+
+![layer](./images/echozyr2001/layer.png)
+
+![animation](./images/echozyr2001/animation.png)
+
 <!-- Content_END -->
