@@ -85,6 +85,24 @@ Iinoni.，粉丝简称真夜中）[1]又称ZUTOMAYO（日语：ずとまよ）�
 </div>
 ```
 
+### 02.13
+#### 学习时长：1小时
 
-
+补上之前没学的东西，姑且是把基本类型的选择器和盒子玩懂了，用CSS完善了一下目前做的网页。但是排版还是很构思
+```html
+        a:hover{
+            color: blue;
+        }
+        a{
+            display: block;
+            background-color: orange;
+            color: white;
+            text-decoration: none;
+            width: 200px;height: 200px;
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+        }
+```
+写了一个很简单的超链接标签的CSS代码，作为选择器放在head的话确实比直接在body中的标签引入要好看的多，也有可能是我的写法太丑陋了（
 <!-- Content_END -->
