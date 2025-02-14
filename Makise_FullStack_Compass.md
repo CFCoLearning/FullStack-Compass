@@ -33,4 +33,9 @@ next作为一个全栈框架无疑是很优秀的，结合lowdb或其他类似�
 https://www.bilibili.com/video/BV1TTN9eiEom/?spm_id_from=333.337.search-card.all.click&vd_source=35e706041597c24e7956cc9a1ca4e48a
 我将学习成果上传到了github，下面是地址
 https://github.com/MakiseCrise/FullCompassLearning.git
+
+### 02.14
+今日学习时长:4h
+看了一遍tailwindcss和nextjs的文档，尝试加入shadcnui制作了一个个人首页的文字介绍动效，具体放到了个人仓库
+https://github.com/MakiseCrise/FullCompassLearning.git
 <!-- Content_END -->
