@@ -124,4 +124,263 @@
 
 ![animation](./images/echozyr2001/animation.png)
 
+### 02.15
+
+> 学习时间：120 min
+
+cfc-web 项目开始要用到后端了。我暂时懒得去搭建后端服务，决定在 `convex` 和 `sanity` 中选择一个使用，下面是它们之间的对比：
+
+**核心定位**
+|工具|类型|主要用途|
+|--|--|--|
+|Convex|实时后端即服务（BaaS）|提供实时数据库、函数即服务（FaaS）、状态管理，用于快速构建全栈实时应用。|
+|Sanity|内容管理系统（CMS）|专注于内容管理和结构化数据存储，提供灵活的内容建模和编辑界面。|
+
+考虑到目前最高优先级是实现表单提交并储存的功能，而 `Sanity` 更适合博客或文档这类的内容管理，于是我决定使用 `Convex`。
+
+但是 `Convex` 也存在一个缺点，它不是开源的，若持续使用可能会产生费用。若需要开源方案可以选择 `Supabase`，但因为之前使用过 `Supabase`，我又想尝试一些新东西，所以还是用用 `Convex` 吧，等到了收费那一步在做迁移吧（虽然迁移难度应该挺大）。
+
+---
+
+**走一遍 Convex 官方的教程**
+
+初始化项目：
+
+```shell
+npm install convex
+
+npx convex dev
+```
+
+创建实例数据 `sampleData.jsonl`
+
+```jsonl
+{"text": "Buy groceries", "isCompleted": true}
+{"text": "Go for a swim", "isCompleted": true}
+{"text": "Integrate Convex", "isCompleted": false}
+```
+
+通过以下方式添加到数据库中：
+
+```shell
+npx convex import --table tasks sampleData.jsonl
+```
+
+可以在网页中看到数据
+
+![data](./images/echozyr2001/data.png)
+
+通过下面的方式定义一个查询 api，用于查询 tasks 库中的内容。
+
+```typescript
+import { query } from "./_generated/server";
+
+export const get = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db.query("tasks").collect();
+  },
+});
+```
+
+在查询前需要创建一个 provider（常规操作了）
+
+```tsx
+"use client";
+
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ReactNode } from "react";
+
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+
+export function ConvexClientProvider({ children }: { children: ReactNode }) {
+  return <ConvexProvider client={convex}>{children}</ConvexProvider>;
+}
+```
+
+privider 需要包裹在 RootLayout 下：
+
+```tsx
+"use client";
+
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ReactNode } from "react";
+
+const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+
+export function ConvexClientProvider({ children }: { children: ReactNode }) {
+  return <ConvexProvider client={convex}>{children}</ConvexProvider>;
+}
+
+{/* */}
+
+import { ThirdwebProvider } from "thirdweb/react";
+import { ConvexClientProvider } from "./convex-client-provider";
+
+export function Providers({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <ThirdwebProvider>
+      <ConvexClientProvider>{children}</ConvexClientProvider>
+    </ThirdwebProvider>
+  );
+}
+```
+
+下面是查询的方式
+
+```tsx
+"use client";
+
+import Image from "next/image";
+import { useQuery } from "convex/react";
+import { api } from "../convex/_generated/api";
+
+export default function Home() {
+  const tasks = useQuery(api.tasks.get);
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      {tasks?.map(({ _id, text }) => <div key={_id}>{text}</div>)}
+    </main>
+  );
+}
+```
+
+---
+
+**Convex 数据库概念**
+
+> Convex 数据库采用关系型数据模型设计，支持类 JSON 文档存储，可自由选择是否使用模式定义。其"开箱即用"的特性，通过简洁易用的接口即可实现稳定的查询性能。
+>
+> 通过轻量级 JavaScript API，您可以直接在查询和变更函数中实现数据读写操作。无需任何配置，无需编写 SQL 语句，仅需使用 JavaScript 即可满足应用程序的所有数据需求。
+
+**Tables**
+
+`Conve`x 中，数据库表不需要事先指定结构，插入内容之后表结构会自行创建。
+
+```ts
+// `friends` table doesn't exist.
+await ctx.db.insert("friends", { name: "Jamie" });
+// Now it does, and it has one document.
+```
+
+**Documents**
+
+表中的内容被称为 `Documents`，它是一个 `json` 对象，类似 `mongoDB` 中的数据。
+
+> 这里有一种 .jsonl 文件，我的理解是它是一些又 json 对象组成的列表
+
+```jsonl
+{}
+{"name": "Jamie"}
+{"name": {"first": "Ari", "second": "Cole"}, "age": 60}
+```
+
+**Schemas**
+
+若实在需要定义表结构，可以使用 `Schemas`：
+
+```ts
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
+
+// @snippet start schema
+export default defineSchema({
+  messages: defineTable({
+    author: v.id("users"),
+    body: v.string(),
+  }),
+});
+```
+
+---
+
+**写入数据**
+
+使用 `db.insert` 方法在数据库中创建新 `Document`，`insert` 会返回插入结果的 `id`：
+
+```ts
+import { mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const createTask = mutation({
+  args: { text: v.string() },
+  handler: async (ctx, args) => {
+    const taskId = await ctx.db.insert("tasks", { text: args.text });
+    // do something with `taskId`
+  },
+});
+```
+
+使用 `db.patch` 方法更新现有 `Document`：
+
+```ts
+import { mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const updateTask = mutation({
+  args: { id: v.id("tasks") },
+  handler: async (ctx, args) => {
+    const { id } = args;
+    console.log(await ctx.db.get(id));
+    // { text: "foo", status: { done: true }, _id: ... }
+
+    // Add `tag` and overwrite `status`:
+    await ctx.db.patch(id, { tag: "bar", status: { archived: true } });
+    console.log(await ctx.db.get(id));
+    // { text: "foo", tag: "bar", status: { archived: true }, _id: ... }
+
+    // Unset `tag` by setting it to `undefined`
+    await ctx.db.patch(id, { tag: undefined });
+    console.log(await ctx.db.get(id));
+    // { text: "foo", status: { archived: true }, _id: ... }
+  },
+});
+```
+
+使用 `db.delete` 方法删除现有 `Document`：
+
+```ts
+import { mutation } from "./_generated/server";
+import { v } from "convex/values";
+
+export const deleteTask = mutation({
+  args: { id: v.id("tasks") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
+});
+```
+
+---
+
+**定义Schemas**
+
+在 `npm convex dev` 启动的情况下，创建 `convex/schema.ts` 文件，会自动在数据库中创建对应的表结构。
+
+```ts
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
+
+export default defineSchema({
+  messages: defineTable({
+    body: v.string(),
+    user: v.id("users"),
+  }),
+  users: defineTable({
+    name: v.string(),
+    tokenIdentifier: v.string(),
+  }).index("by_token", ["tokenIdentifier"]),
+});
+```
+
+同时，在这种情况下使用未在 `schema.ts` 中定义的表会报错（例如在教程中创建的 `tasks` 表）。
+
+![error-table](./images/echozyr2001/error-table.png)
+
+> 总结，快速过了一下 convex 的教程，熟悉了插入与查询数据的方式，同时成功在 `cfc-web` 项目中实现报名表单数据的提交。
+
 <!-- Content_END -->
