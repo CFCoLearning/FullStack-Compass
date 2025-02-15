@@ -166,4 +166,14 @@ flex: unset;
 - _[Flex 布局教程：语法篇 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=chatgpt.com)_
 - [mdn web docs &gt; CSS &gt; flex](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex?utm_source=blog.rising-galaxy.top#%E5%BD%A2%E5%BC%8F%E5%AE%9A%E4%B9%89)
 
+### 02.15
+
+> Learning time: About `1.5` hours
+
+---
+
+有事耽搁，今日仅跟着做了下右侧面板。
+
+同时算是简单认识了一下 TypeScript 中的解构赋值写法。
+
 <!-- Content_END -->
