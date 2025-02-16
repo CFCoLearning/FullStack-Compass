@@ -38,4 +38,8 @@ https://github.com/MakiseCrise/FullCompassLearning.git
 今日学习时长:4h
 看了一遍tailwindcss和nextjs的文档，尝试加入shadcnui制作了一个个人首页的文字介绍动效，具体放到了个人仓库
 https://github.com/MakiseCrise/FullCompassLearning.git
+
+### 02.16
+今日学习时长:2h
+对网页页面进行了一些开发，添加了侧边栏
 <!-- Content_END -->
