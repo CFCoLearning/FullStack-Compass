@@ -42,4 +42,11 @@ https://github.com/MakiseCrise/FullCompassLearning.git
 ### 02.16
 今日学习时长:2h
 对网页页面进行了一些开发，添加了侧边栏
+
+### 02.17 
+今日学习时间:4h
+为网页的侧边栏制作了动画，添加了一些样式
+读到了几篇非常不错的文章
+https://www.hehehai.cn/posts/framer-motion-guide
+这个博主一共翻了三篇关于motion的使用教程跟案例，看这几篇博客学到了挺多代码写法
 <!-- Content_END -->
