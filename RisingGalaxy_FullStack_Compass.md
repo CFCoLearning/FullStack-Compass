@@ -176,4 +176,12 @@ flex: unset;
 
 同时算是简单认识了一下 TypeScript 中的解构赋值写法。
 
+### 02.16
+
+> Learning time: About `3` hours
+
+---
+
+今日暂停了一下 _Full-Stack Social Media App Tutorial_ 的学习。主要在看 [AYA](https://github.com/liriliri/aya) 的代码 ~~(虽然似乎与本计划无关，项目里好歹有点 ts 沾点边，就当我在学吧)~~ :D
+
 <!-- Content_END -->
