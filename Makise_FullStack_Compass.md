@@ -49,4 +49,9 @@ https://github.com/MakiseCrise/FullCompassLearning.git
 读到了几篇非常不错的文章
 https://www.hehehai.cn/posts/framer-motion-guide
 这个博主一共翻了三篇关于motion的使用教程跟案例，看这几篇博客学到了挺多代码写法
+
+### 02.18
+今日学习时间:5h
+为网页更新了转场动画，用ps做了个背景，完善了侧边栏的功能，基本做出来了个blog雏形
+遇到了个若只bug，从日志看不出来一点错误根据，666了
 <!-- Content_END -->
