@@ -383,4 +383,57 @@ export default defineSchema({
 
 > 总结，快速过了一下 convex 的教程，熟悉了插入与查询数据的方式，同时成功在 `cfc-web` 项目中实现报名表单数据的提交。
 
+### 02.17
+
+> 学习时间：120 min
+
+主要想看一下 nextjs 提供的 Authentication 功能
+
+在 nextjs 官方文档提到了一点：
+
+> While you can implement a custom auth solution, for increased security and simplicity, we recommend using an authentication library.
+
+在 nextjs 项目中使用官方提供的 Auth lib 在适配度与安全性上可能更合适。
+
+---
+
+浏览文档时发现了一个特殊的路由 `app/actions/*.ts`，文档中没有解释具体含义，我初步将它理解为与 `app/api/*/router.ts` 是同一种 `api` 的不同实现方式。
+
+---
+
+尝试了一些钱包连接库，效果都不理想，最终还是使用最底层的库自己搭轮子，主流的钱包 kit 在底层都是使用了 wagmi：https://wagmi.sh/
+
+wagmi 是一套用于链上交互的 React hooks, 基于 viem 构建。例如
+
+* 连接钱包 useConnect
+* 获取当前连接的用户地址 useAccount
+* 发送交易 useSendTransaction
+* 读取合约变量 useReadContract
+
+如果使用的组件是服务端组件，无法使用 hook, 则建议直接使用 viem，其无需另外安装，wagmi 已默认导出了 viem 的所有方法。
+
+**SIWE 规则**
+
+SIWE（SignIn with Ethereum）是一种在以太坊上验证用户身份的一种方式，表明用户有对应钱包的控制权。
+
+你可能会有一个疑问，在网站上通过钱包连接之后不久代表了我有钱包的所有权了吗。
+
+对于前端来说是这样的，但是对于一些需要后端支持的接口调用，你是没有办法表明自己的身份的，若只是在接口中传入你的地址的话，那么谁都可以冒用你的身份了，毕竟地址是公开的信息。
+
+SIWE 的流程总结起来就是三个步骤：连接钱包 -- 签名 -- 获取身份标识。
+
+**连接钱包**
+
+通过钱包插件在 Dapp 中连接钱包。
+
+**签名**
+
+在 SIWE 中，签名的步骤包括获取 Nonce 值、钱包签名以及后端校验。
+
+获取 Nonce 值这一步是参考 ETH 交易中的 Nonce 值设计的，后端收到请求之后，返回生成的随机 Nonce 值，并和当前的地址关联，为后面的校验签名做准备，
+
+前端获取到 Nonce 值之后，唤起钱包，用户授权签名。签名完成后发送给后端，
+
+后端在校验签名通过后，返回对应的用户身份标识（一般是 JWT），前端在后续请求发送时需要带上对应的地址和身份标识，表明自己对钱包的所有权。
+
 <!-- Content_END -->
