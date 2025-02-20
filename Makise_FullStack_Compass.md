@@ -54,4 +54,8 @@ https://www.hehehai.cn/posts/framer-motion-guide
 今日学习时间:5h
 为网页更新了转场动画，用ps做了个背景，完善了侧边栏的功能，基本做出来了个blog雏形
 遇到了个若只bug，从日志看不出来一点错误根据，666了
+
+### 02.20
+做了点主页动效，原本想做博客系统的，但是涉及到文章存储跟调用又不想搞了，最后做成了个观赏性主页，但是也没做多少，先摸着慢慢搞
+https://github.com/MakiseCrise/FullCompassLearning
 <!-- Content_END -->
