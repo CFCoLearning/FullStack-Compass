@@ -184,4 +184,14 @@ flex: unset;
 
 今日暂停了一下 _Full-Stack Social Media App Tutorial_ 的学习。主要在看 [AYA](https://github.com/liriliri/aya) 的代码 ~~(虽然似乎与本计划无关，项目里好歹有点 ts 沾点边，就当我在学吧)~~ :D
 
+### 02.22
+
+> Learning time: About `2` hours
+
+---
+
+磨磨蹭蹭地今天才把页面设计这部分搞定...
+
+明天再开始后面的部分吧 :D
+
 <!-- Content_END -->
