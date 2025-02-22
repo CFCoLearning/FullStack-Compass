@@ -51,9 +51,10 @@ const element = React.createElement(
 );
 ```
 
-要从组件返回多个元素，必须用一个`parent tag`包裹它们，可以使用`<div></div>`或者一个空标签`<></>`
+- 要从组件返回多个元素，必须用一个`parent tag`包裹它们，可以使用`<div></div>`或者一个空标签`<></>`
 
-JSX 要求标签明确关闭：像 `<img>` 这样的自闭合标签必须写成 `<img />`，像 `<li>oranges` 这样的包装标签必须写成 `<li>oranges</li>`。
+- JSX 要求标签明确关闭：像 `<img>` 这样的自闭合标签必须写成 `<img />`，像 `<li>oranges` 这样的包装标签必须写成 `<li>oranges</li>`
+- 使用驼峰式命名
 
 可以使用[转换器](https://transform.tools/html-to-jsx)，将现有的`html`代码转换为`JSX`代码。
 
@@ -117,5 +118,152 @@ function MyButton({ count, onClick }) {
   );
 }
 ```
+
+### 02.22
+
+React使用声明式编程，只需要声明页面需要展示的内容，React会负责操作DOM来完成页面的渲染。
+
+在React中，组件就是函数，要使React正常运行，需要注意以下几点：
+
+- React 组件应该大写，以区别于纯 HTML 和 JavaScript
+- 使用 React 组件的方式与使用常规 HTML 标签的方式相同，带有尖括号 `<>`
+
+```jsx
+function Header() {
+  return <h1>Develop. Preview. Ship.</h1>;
+}
+ 
+const root = ReactDOM.createRoot(app);
+root.render(<Header />);
+```
+
+与作为第一个函数参数传递给组件的`props`不同，`state`是初始化并存储在组件中。你可以将`state` 的信息作为`props`传递给子组件，但更新`state`的逻辑应该保留在最初创建`state`的组件中。
+
+#### 如何启动一个next.js项目？
+
+首先使用npm安装依赖包
+
+```shell
+npm install react@latest react-dom@latest next@latest
+```
+
+Next.js 使用文件系统路由。这意味着，可以使用文件夹和文件，而不是使用代码来定义应用程序的路由。
+
+创建`app`文件夹，然后在该文件夹下创建`page.js`
+
+```jsx
+import { useState } from 'react';
+ 
+function Header({ title }) {
+  return <h1>{title ? title : 'Default title'}</h1>;
+}
+ 
+//将 export default 添加到 <HomePage> 组件，以帮助Next.js区分要呈现为页面主组件的组件。
+export default function HomePage() {
+  const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+ 
+  const [likes, setLikes] = useState(0);
+ 
+  function handleClick() {
+    setLikes(likes + 1);
+  }
+ 
+  return (
+    <div>
+      <Header title="Develop. Preview. Ship." />
+      <ul>
+        {names.map((name) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+ 
+      <button onClick={handleClick}>Like ({likes})</button>
+    </div>
+  );
+}
+```
+
+在项目根目录创建`package.json`并添加以下json配置：
+
+```json
+{
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "next": "^14.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
+```
+
+运行`npm run dev` 来启动项目，启动后页面报错：
+
+![image-20250222202900283](https://minio.drivefly.cn:443/image-hoshino/blog/2025/02/22/image-20250222202900283.png)
+
+这是因为 Next.js 使用了 React Server Components，这是一项允许 React 在服务器上渲染的新功能。服务器组件不支持 `useState`，因此需要改用 Client 组件。
+
+项目启动后在`app`文件夹下自动创建了一个`layout.js`。这是应用程序的主要布局。可以使用它来添加在所有页面之间共享的 UI 元素（例如导航、页脚等）。
+
+#### 服务端渲染与客户端渲染
+
+在幕后，组件被拆分为两个模块图。**服务器模块图（或树）**包含在服务器上渲染的所有服务器组件，**客户端模块图（或树）**包含所有客户端组件。
+
+服务器组件渲染后，一种称为 **React 服务器组件有效负载 （RSC）** 的特殊数据格式被发送到客户端。RSC 有效负载包含：
+
+1. Server Components 的渲染结果。
+2. 客户端组件应呈现位置的占位符以及对其 JavaScript 文件的引用。
+
+![image-20250222205729252](https://minio.drivefly.cn:443/image-hoshino/blog/2025/02/22/image-20250222205729252.png)
+
+React默认在服务端进行渲染，但`useState`这样的Hook函数只能在客户端用，因此上面的写法会报错，导致页面无法渲染。
+
+需要将`button`抽离为单个组件并声明在客户端进行渲染。
+
+```jsx
+'use client'; // 在客户端渲染
+
+import { useState } from 'react';
+ 
+export default function LikeButton() {
+  const [likes, setLikes] = useState(0);
+ 
+  function handleClick() {
+    setLikes(likes + 1);
+  }
+ 
+  return <button onClick={handleClick}>Like ({likes})</button>;
+}
+```
+
+然后在主页面中导入这个组件即可正常渲染。
+
+```jsx
+import LikeButton from './like-button';
+
+function Header({ title }) {
+  return <h1>{title ? title : 'Default title'}</h1>;
+}
+ 
+export default function HomePage() {
+  const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+ 
+  return (
+    <div>
+      <Header title="Develop. Preview. Ship." />
+      <ul>
+        {names.map((name) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+ 
+      <LikeButton />
+    </div>
+  );
+}
+```
+
+
 
 <!-- Content_END -->
