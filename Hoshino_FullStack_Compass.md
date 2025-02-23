@@ -264,6 +264,48 @@ export default function HomePage() {
 }
 ```
 
+### 02.23
 
+今天主要看了Next.js的路由怎么配置。
+
+Next.js 采用了基于文件系统的路由机制，其中浏览器中的 URL 路径是由代码库中的文件夹及文件位置决定的。遵循约定对于正确实用路由功能至关重要。通过创建嵌套的文件夹结构，Next.js 自动路由到指定文件。这简化了创建嵌套路由的过程，并增强了应用程序的组织和结构。
+
+`[]`包裹的文件夹表示动态路由。Next.js会自动渲染路由对应文件夹下的`page.txs`页面。
+
+![img](https://minio.drivefly.cn:443/image-hoshino/blog/2025/02/23/4a3e4caa59ae450e9539ad9e696b7d88~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp)
+
+动态路由可以利用每个页面中提供的 `params` 对象来获取动态路由的值。
+
+```tsx
+export default function ProductDetail({
+  params,
+}: {
+  params: { productId: string };
+}) {
+  return <h1>Details about product {params.productId}</h1>;
+}
+```
+
+对于嵌套的动态路由，也可以在路由对应的`page.txs`中通过`params`来获取所有的路由参数。
+
+```tsx
+export default function ProductDetail({
+  params,
+}: {
+  params: { productId: string; reviewId: string };
+}) {
+  return (
+    <h1>
+      Review {params.reviewId} for product {params.productId}
+    </h1>
+  );
+}
+```
+
+Next.js 提供了 catch-all segments（捕获所有路由段）功能，允许灵活地使用路由。假设我们想创建一个文档站点，其中包含多个功能和概念，每个概念都有自己独特的路由。我们可以使用 catch-all segments 路由来代替为每个路由创建单独文件。
+
+路由组允许在不影响 URL 结构的情况下对路由和文件进行逻辑分组（logical grouping）。可以通过将文件夹放入圆括号中来创建：`(folderName)`。例如，`(auth)/register`、`(auth)/login` 和 `(auth)/forgot-password` 可以通过 `/register`、`/login` 和 `/forgot-password` 访问。使用 `auth` 路由组可以更有效地组织路由。
+
+Next.js 中还提供了私有文件夹功能，只需在文件夹名称前加下划线`_`，就让它成为一个私有实现细节，不能通过路由访问。
 
 <!-- Content_END -->
