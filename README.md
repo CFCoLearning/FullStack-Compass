@@ -142,10 +142,10 @@ SaaS、Typescript、React、Nextjs、Taildwindcss、MDX、Linaria、Shiki、Reac
 
 ## 数据统计
 
-参与人数：TODO
+参与人数：9
 
-完成人数：TODO
+完成人数：2
 
-全勤人数：TODO
+全勤人数：0
 
-完成率：TODO
+完成率：22%
